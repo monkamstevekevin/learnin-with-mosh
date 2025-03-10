@@ -47,4 +47,7 @@ public class categoryService {
 
         productRepository.deleteById(1L);
     }
+    public void modifyingProduct(){
+        productRepository.updatePriceByCategory(BigDecimal.valueOf(10),(byte) 1);
+    }
 }

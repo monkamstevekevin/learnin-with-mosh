@@ -17,7 +17,9 @@ public class userService {
      private final ProfileRepository profileRepository;
       private final AddressRepository addressRepository;
      private final EntityManager em;
-     @Transactional
+    private final UserRepository userRepository;
+
+    @Transactional
      public void showEntityStates(){
          var user  =  User.builder().name("John Doe").
                      email("john@gmail.com").
@@ -50,4 +52,11 @@ var address  =  addressRepository.findById(1L).orElseThrow();
   public void deletingRelatedEntity(){
          repository.deleteById(3L);
   }
+  public void profileManagement(){
+       var users =   userRepository.findLoyalUsers(2);
+       users.forEach( user -> {
+           System.out.println(user.getId()+" : " + user.getEmail());
+       });
+  }
+
 }
